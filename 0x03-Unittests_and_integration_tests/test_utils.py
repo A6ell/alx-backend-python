@@ -23,7 +23,7 @@ class TestAccessNestedMap(unittest.TestCase):
             nested_map: Dict,
             path: Tuple[str],
             expected: Union[Dict, int],
-            ) -> None:
+    ) -> None:
         '''
         this is a function
         '''
@@ -37,7 +37,7 @@ class TestAccessNestedMap(unittest.TestCase):
             self,
             nested_map: Dict,
             path: Tuple[str],
-            ) -> None:
+    ) -> None:
         '''
         this is a function
         '''
@@ -68,6 +68,7 @@ class TestMemoize(unittest.TestCase):
     '''
     Tests the `memoize` function
     '''
+
     def test_memoize(self) -> None:
         '''
         Tests `memoize`'s output
@@ -83,9 +84,8 @@ class TestMemoize(unittest.TestCase):
                 TestClass,
                 "a_method",
                 return_value=lambda: 42,
-                ) as memo_fxn:
+        ) as memo_fxn:
             test_class = TestClass()
             self.assertEqual(test_class.a_property(), 42)
             self.assertEqual(test_class.a_property(), 42)
             memo_fxn.assert_called_once()
-

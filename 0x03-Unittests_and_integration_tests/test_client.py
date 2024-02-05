@@ -25,7 +25,7 @@ class TestGithubOrgClient(unittest.TestCase):
         test_client = GithubOrgClient(org_name)
         self.assertEqual(test_client.org, {"payload": True})
         mock_get_json.assert_called_once_with(
-                f"https://api.github.com/orgs/{org_name}")
+            f"https://api.github.com/orgs/{org_name}")
 
     @patch.object(GithubOrgClient, 'org', new_callable=PropertyMock)
     def test_public_repos_url(self, mock_org):
@@ -46,7 +46,7 @@ class TestGithubOrgClient(unittest.TestCase):
                 GithubOrgClient,
                 '_public_repos_url',
                 new_callable=PropertyMock
-                ) as mock_public_repos_url:
+        ) as mock_public_repos_url:
             mock_public_repos_url.return_value = "mocked_url"
             test_client = GithubOrgClient("org_name")
             self.assertEqual(test_client.public_repos(), ["repo1", "repo2"])
@@ -110,7 +110,6 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         is what you expect from the chosen payload"""
         test_client = GithubOrgClient("org_name")
         self.assertEqual(
-                test_client.public_repos(license="apache-2.0"),
-                self.apache2_repos)
+            test_client.public_repos(license="apache-2.0"),
+            self.apache2_repos)
         self.mock_get.assert_called_once()
-
